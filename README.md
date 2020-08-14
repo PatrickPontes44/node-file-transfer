@@ -2,13 +2,13 @@
 This is my first node project. It's a way to transfer files between your devices, like a smartphone and a computer.
 
 ## How it works:
-It creates a server in your machine that will be responsible for serving and receiving the files.
-From your smartphone or other device you can download and upload files directly to your computer.
+It creates a server in your machine that will be responsible for serving and receiving the files.\n
+From your smartphone or other device you can download and upload files directly to your computer.\n
 To begin using it you must open your browser in localhost:5000 or any port that you may come to define.
 
 ### Basic commands:
-Clicking on a folder will open it. Clicking on a file will download it.
-Clicking the upload button will open a pop-up that allows you to choose the file you want to upload.
+Clicking on a folder will open it. Clicking on a file will download it. \n
+Clicking the upload button will open a pop-up that allows you to choose the file you want to upload. \n
 
 In the text input in the main page you can type the following commands. You can define more if you want.
 
@@ -26,7 +26,7 @@ Returns to root directory (the one that contains the project).
 new -> some-path/some-folder/
 ```
 
-Goes to the selected folder.
+Goes to the selected directory.
 
 
 
