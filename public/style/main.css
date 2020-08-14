@@ -1,0 +1,242 @@
+:root{
+    --background-color: #3b3b3b;
+    --text-color1: rgb(250, 241, 241);
+    --text-color2: rgb(17, 16, 16);
+    font-size: 60%; /* controle das medidas rem */
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    width: 100vw;
+    height: 100vh;
+}
+
+body{
+    width: 100%;
+    background-color: var(--background-color);
+    position: relative;
+    
+}
+#container{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 80% 10%;
+    place-items: center;
+}
+#upload-btn{
+    display: none;
+}
+
+.upload-popup{
+    display: none;
+}
+
+#current-folder{
+    color: var(--text-color1);
+    font-size: 2rem;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-break: break-all;
+}
+form{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+form #command-box{
+    color: var(--text-color2);
+    font-size: 1.8rem;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+}
+form #enter{
+    font-size: 2.5rem;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    background-color: aqua;
+    cursor: pointer;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+    transition: .3s;
+}
+form #enter:hover{
+    background-color: rgb(19, 204, 204);
+
+}
+
+#main-container{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    place-items: center;
+    gap: 20px;
+    overflow-y: auto;
+}
+#main-container::-webkit-scrollbar{
+    display: none;
+}
+
+#main-container article{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+
+button{
+    max-width: 80%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 1.2rem;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    word-break: break-all;
+    cursor: pointer;
+}
+
+button .img-container{
+    width: 64px;
+    height: 64px;
+    pointer-events: none;
+}
+
+button:hover .img-container .folder-icon{
+    transform: translateY(-5px);
+}
+button .img-container .folder-icon{
+    width: 100%;
+    height: auto;
+    transition: ease-in-out .2s;
+}
+button .folder-name{
+    color: var(--text-color1);
+    font-size: 1.6rem;
+    pointer-events: none;
+}
+
+@media (max-width: 768px){
+    #main-container{
+        grid-template-columns: 1fr 1fr;
+    }
+    form #enter{
+        font-size: 2rem;
+    }
+    #upload-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        bottom: 40px;
+        right: 0px;
+        z-index: 100;
+        width: 80px;
+        height: 80px;
+    }
+    #upload-btn img{
+        width: 100%;
+        height: auto;
+    }
+
+    .upload-popup{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        height: 60%;
+        background-color: #eee;
+        border-radius: 5px;
+        z-index: 300;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    }
+    .active{
+        display: flex;
+        animation: appearDiv;
+        animation-duration: .3s;
+        animation-timing-function: ease-in-out;
+    }
+
+    @keyframes appearDiv {
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+
+    .upload-popup form{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .upload-popup form input{
+        margin: 30px;
+    }
+    #upload-input-file{
+        display: none;
+    }
+    #upload-input-btn{
+        font-size: 2rem;
+        padding: 5px;
+        background-color: rgb(19, 204, 204);
+        border: none;
+        outline: none;
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+    }
+    #file-label{
+        font-size: 2rem;
+        font-family: sans-serif;
+        background-color: #cd34db;
+        color: #fff;
+        padding: 5px 15px;
+        border-radius: 5px;
+    }
+    #file-name{
+        font-size: 1.5rem;
+        margin-top: 10px;
+        font-family: sans-serif;
+        text-transform: capitalize;
+    }
+
+}

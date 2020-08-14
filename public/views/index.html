@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Transfer</title>
+    <link rel="stylesheet" href="../style/main.css">
+</head>
+<body>
+    <button id="upload-btn">
+        <img src="../images/upload.svg" alt="upload">
+    </button>
+
+    <div class="upload-popup">
+        <form action="upload" method="POST" enctype="multipart/form-data">
+            <label for="upload-input-file" id="file-label">Select a file &#187;</label>
+            <input type="file" name="myFile" id="upload-input-file" multiple>
+            <span id="file-name"></span>
+            <input type="submit" name="submit" value="Upload" id="upload-input-btn">            
+        </form>
+    </div>
+    <div id="container">
+        <p id="current-folder">{{response.currentDir}}</p>
+
+        <main id="main-container">
+    
+            {% for file in response.fileArray %}
+            
+                <article>
+                    <button title={{file[0]}} onclick="goToFolder(event)" name="{{file[0]}}" data-path="{{file[2]}}\{{file[0]}}"
+                     data-type="{{file[1]}}">
+                        <div class="img-container">
+                            {% if file[1] == "folder" %}
+                                <object type="image/svg+xml" data="../images/empty_folder.svg" class="folder-icon">
+                                </object>
+                            {% elif file[1] == "application" %}
+                                <object type="image/svg+xml" data="../images/apps.svg" class="folder-icon">
+                                </object>
+                            {% elif file[1] == "video" %}
+                                <object type="image/svg+xml" data="../images/vids.svg" class="folder-icon">
+                                </object>
+                            {% elif file[1] == "audio" %}
+                                <object type="image/svg+xml" data="../images/mus.svg" class="folder-icon">
+                                </object>
+                            {% elif file[1] == "text" %}
+                                <object type="image/svg+xml" data="../images/docs.svg" class="folder-icon">
+                                </object>
+                            {% elif file[1] == "image" %}
+                                <object type="image/svg+xml" data="../images/imgs.svg" class="folder-icon">
+                                </object>
+                            {% else %}
+                                <object type="image/svg+xml" data="../images/bat.svg" class="folder-icon">
+                                </object>
+                            {% endif %}
+                        </div>
+                        <span class="folder-name">{{file[0]}}</span>
+                    </button>
+                </article>
+                
+            {%endfor%}
+        
+        </main>
+        <form action="/" method="POST">
+            <input id="command-box" type="text" placeholder="Type something" name="command" autofocus>
+            <input type="submit" name="submit" value="Enter" id="enter">
+        </form>
+    </div>
+
+    <script src="../js/formSubmitFalse.js"></script>
+    <script src="../js/handleFilePopup.js"></script>
+</body>
+</html>
